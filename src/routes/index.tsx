@@ -122,7 +122,7 @@ function Hero() {
       <div className="relative mx-auto grid w-full max-w-[1400px] flex-1 items-center gap-10 lg:grid-cols-12">
         <div className="lg:col-span-7">
           <p className="label-mono mb-8 flex items-center gap-3">
-            <span className="h-px w-8 bg-primary" /> Computer Science / Jaipur, India
+            <span className="hidden h-px w-8 bg-primary sm:block" /> Computer Science / Jaipur, India
           </p>
           <h1 className="font-display text-[15vw] uppercase leading-[0.98] tracking-[0.012em] sm:text-[11.5vw] lg:text-[7.4vw] xl:text-[7.25rem]">
             Curious by
