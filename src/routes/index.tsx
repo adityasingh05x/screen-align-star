@@ -302,7 +302,7 @@ function Contact() {
               <li key={c.label} className="flex items-center justify-between gap-4 border-b py-6">
                 <span className="label-mono">{c.label}</span>
                 {c.value ? (
-                  <a href={c.href(c.value)} target={c.label === "Email" ? undefined : "_blank"} rel="noreferrer" className="link-line text-lg">
+                  <a href={c.href(c.value)} target={c.label === "Email" ? undefined : "_blank"} rel="noreferrer" className="link-line min-w-0 break-all text-lg text-right">
                     {c.value} ↗
                   </a>
                 ) : (
