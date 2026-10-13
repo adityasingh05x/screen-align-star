@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { Fragment, useEffect, useRef, useState, type ReactNode } from "react";
 import { HeroArt, InterfacePreview } from "@/components/portfolio/TechArt";
 
 export const Route = createFileRoute("/")({
@@ -18,9 +18,9 @@ export const Route = createFileRoute("/")({
 
 /* ——— Editable contact placeholders: replace null with your real details ——— */
 const CONTACT: { label: string; value: string | null; href: (v: string) => string }[] = [
-  { label: "Email", value: null, href: (v) => `mailto:${v}` },
-  { label: "GitHub", value: null, href: (v) => v },
-  { label: "LinkedIn", value: null, href: (v) => v },
+  { label: "Email", value: "adirajput987139916@gmail.com", href: (v) => `mailto:${v}` },
+  { label: "GitHub", value: "https://github.com/adityasingh05x", href: (v) => v },
+  { label: "LinkedIn", value: "https://www.linkedin.com/in/aditya-singh-49178042b", href: (v) => v },
 ];
 
 const NAV = [
@@ -288,6 +288,21 @@ function Certifications() {
   );
 }
 
+function LinkText({ value }: { value: string }) {
+  const parts = value.split(/(?<=[/:@.])/);
+  return (
+    <>
+      {parts.map((p, i) => (
+        <Fragment key={i}>
+          {p}
+          {i < parts.length - 1 && <wbr />}
+        </Fragment>
+      ))}
+      {" ↗"}
+    </>
+  );
+}
+
 function Contact() {
   return (
     <Section id="contact">
@@ -302,8 +317,8 @@ function Contact() {
               <li key={c.label} className="flex items-center justify-between gap-4 border-b py-6">
                 <span className="label-mono">{c.label}</span>
                 {c.value ? (
-                  <a href={c.href(c.value)} target={c.label === "Email" ? undefined : "_blank"} rel="noreferrer" className="link-line text-lg">
-                    {c.value} ↗
+                  <a href={c.href(c.value)} target={c.label === "Email" ? undefined : "_blank"} rel="noreferrer" className="link-line min-w-0 break-words text-lg text-right">
+                    <LinkText value={c.value} />
                   </a>
                 ) : (
                   <span className="font-mono text-sm text-muted-foreground/70">Not added yet</span>
@@ -328,7 +343,7 @@ function Footer() {
             <a key={id} href={`#${id}`} className="link-line font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground hover:text-foreground">{l}</a>
           ))}
           {socials.map((c) => (
-            <a key={c.label} href={c.href(c.value!)} className="link-line font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground hover:text-foreground">{c.label}</a>
+            <a key={c.label} href={c.href(c.value!)} target={c.label === "Email" ? undefined : "_blank"} rel="noreferrer" className="link-line font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground hover:text-foreground">{c.label}</a>
           ))}
         </nav>
         <span className="label-mono">© {new Date().getFullYear()} Aditya Singh</span>
