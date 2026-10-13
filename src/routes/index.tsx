@@ -289,7 +289,7 @@ function Certifications() {
 }
 
 function LinkText({ value }: { value: string }) {
-  const parts = value.split("/");
+  const parts = value.split(/(?<=[/:@.])/);
   return (
     <>
       {parts.map((p, i) => (
