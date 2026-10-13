@@ -303,6 +303,26 @@ function LinkText({ value }: { value: string }) {
   );
 }
 
+function CopyEmail({ email }: { email: string }) {
+  const [copied, setCopied] = useState(false);
+  return (
+    <div className="flex gap-4 font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground">
+      <button
+        type="button"
+        onClick={async () => {
+          try { await navigator.clipboard.writeText(email); } catch { window.prompt("Copy email:", email); }
+          setCopied(true);
+          setTimeout(() => setCopied(false), 2000);
+        }}
+        className="link-line hover:text-primary"
+      >
+        {copied ? "Copied ✓" : "Copy"}
+      </button>
+      <a href={`https://mail.google.com/mail/?view=cm&fs=1&to=${email}`} target="_blank" rel="noreferrer" className="link-line hover:text-primary">Gmail</a>
+    </div>
+  );
+}
+
 function Contact() {
   return (
     <Section id="contact">
@@ -317,9 +337,12 @@ function Contact() {
               <li key={c.label} className="flex items-center justify-between gap-4 border-b py-6">
                 <span className="label-mono">{c.label}</span>
                 {c.value ? (
-                  <a href={c.href(c.value)} target={c.label === "Email" ? undefined : "_blank"} rel="noreferrer" className="link-line min-w-0 break-words text-lg text-right">
-                    <LinkText value={c.value} />
-                  </a>
+                  <div className="flex min-w-0 flex-col items-end gap-2">
+                    <a href={c.href(c.value)} target={c.label === "Email" ? "_top" : "_blank"} rel="noreferrer" className="link-line min-w-0 break-words text-lg text-right">
+                      <LinkText value={c.value} />
+                    </a>
+                    {c.label === "Email" && <CopyEmail email={c.value} />}
+                  </div>
                 ) : (
                   <span className="font-mono text-sm text-muted-foreground/70">Not added yet</span>
                 )}
