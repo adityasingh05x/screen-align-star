@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { Fragment, useEffect, useRef, useState, type ReactNode } from "react";
 import { HeroArt, InterfacePreview } from "@/components/portfolio/TechArt";
 
 export const Route = createFileRoute("/")({
@@ -288,6 +288,21 @@ function Certifications() {
   );
 }
 
+function LinkText({ value }: { value: string }) {
+  const parts = value.split("/");
+  return (
+    <>
+      {parts.map((p, i) => (
+        <Fragment key={i}>
+          {p}
+          {i < parts.length - 1 && <wbr />}
+        </Fragment>
+      ))}
+      {" ↗"}
+    </>
+  );
+}
+
 function Contact() {
   return (
     <Section id="contact">
@@ -302,8 +317,8 @@ function Contact() {
               <li key={c.label} className="flex items-center justify-between gap-4 border-b py-6">
                 <span className="label-mono">{c.label}</span>
                 {c.value ? (
-                  <a href={c.href(c.value)} target={c.label === "Email" ? undefined : "_blank"} rel="noreferrer" className="link-line min-w-0 break-all text-lg text-right">
-                    {c.value} ↗
+                  <a href={c.href(c.value)} target={c.label === "Email" ? undefined : "_blank"} rel="noreferrer" className="link-line min-w-0 break-words text-lg text-right">
+                    <LinkText value={c.value} />
                   </a>
                 ) : (
                   <span className="font-mono text-sm text-muted-foreground/70">Not added yet</span>
