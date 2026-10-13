@@ -392,7 +392,7 @@ function Index() {
       script1.remove();
       script2.remove();
     };
-  }, []);+
+  }, []);
   return (
     <>
       <Nav />
