@@ -376,22 +376,16 @@ function Footer() {
 }
 
 function Index() {
-    useEffect(() => {
+     useEffect(() => {
     const script1 = document.createElement("script");
     script1.src = "https://cdn.botpress.cloud/webchat/v5.0/inject.js";
-    script1.async = true;
-    document.body.appendChild(script1);
-
-    const script2 = document.createElement("script");
-    script2.src =
-      "https://files.bpcontent.cloud/2026/10/13/15/20261013153529-NWETJ2Y0.js";
-    script2.defer = true;
-    document.body.appendChild(script2);
-
-    return () => {
-      script1.remove();
-      script2.remove();
+    script1.onload = () => {
+      const script2 = document.createElement("script");
+      script2.src =
+        "https://files.bpcontent.cloud/2026/10/13/15/20261013153529-NWETJ2Y0.js";
+      document.body.appendChild(script2);
     };
+    document.body.appendChild(script1);
   }, []);
   return (
     <>
