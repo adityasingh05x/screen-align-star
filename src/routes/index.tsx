@@ -61,14 +61,14 @@ function SectionHead({ label, title }: { label: string; title: ReactNode }) {
       <p className="label-mono md:col-span-3 md:pt-4">
         <span className="text-primary">■</span> {label}
       </p>
-      <h2 className="font-display text-5xl uppercase leading-[0.92] sm:text-6xl md:col-span-9 lg:text-8xl">{title}</h2>
+      <h2 className="font-display text-[2.6rem] uppercase leading-[1] tracking-[0.012em] sm:text-6xl md:col-span-9 lg:text-7xl xl:text-[5.5rem]">{title}</h2>
     </Reveal>
   );
 }
 
 function Section({ id, children }: { id: string; children: ReactNode }) {
   return (
-    <section id={id} className="scroll-mt-20 border-t px-5 py-24 sm:px-8 md:py-36 lg:px-14">
+    <section id={id} className="scroll-mt-20 border-t px-5 py-24 sm:px-8 md:py-32 lg:px-14">
       <div className="mx-auto max-w-[1400px]">{children}</div>
     </section>
   );
@@ -122,9 +122,9 @@ function Hero() {
       <div className="relative mx-auto grid w-full max-w-[1400px] flex-1 items-center gap-10 lg:grid-cols-12">
         <div className="lg:col-span-7">
           <p className="label-mono mb-8 flex items-center gap-3">
-            <span className="h-px w-8 bg-primary" /> Computer Science / Jaipur, India
+            <span className="hidden h-px w-8 bg-primary sm:block" /> Computer Science / Jaipur, India
           </p>
-          <h1 className="font-display text-[17vw] uppercase leading-[0.92] tracking-tight sm:text-[13vw] lg:text-[8.6vw] xl:text-[8.4rem]">
+          <h1 className="font-display text-[15vw] uppercase leading-[0.98] tracking-[0.012em] sm:text-[11.5vw] lg:text-[7.4vw] xl:text-[7.25rem]">
             Curious by
             <br />
             <span className="text-outline">Nature.</span>
@@ -134,12 +134,12 @@ function Hero() {
             Create<span className="text-primary">.</span>
           </h1>
         </div>
-        <div className="relative mx-auto aspect-square w-full max-w-[460px] lg:col-span-5 lg:max-w-none">
+        <div className="relative mx-auto aspect-square w-full max-w-[380px] opacity-90 lg:col-span-5 lg:max-w-[440px] lg:justify-self-end">
           <HeroArt />
         </div>
       </div>
       <div className="relative mx-auto mt-10 grid w-full max-w-[1400px] gap-8 border-t pt-8 md:grid-cols-12">
-        <p className="max-w-md text-base leading-relaxed text-muted-foreground md:col-span-6">
+        <p className="max-w-lg text-lg leading-[1.7] text-muted-foreground md:col-span-6">
           I'm <span className="text-foreground">Aditya Singh</span>, a first-year Computer Science Engineering student at JECRC University. I'm learning programming, strengthening my problem-solving skills, and exploring how ideas become useful software.
         </p>
         <div className="flex flex-col gap-3 sm:flex-row md:col-span-6 md:items-start md:justify-end">
@@ -167,7 +167,7 @@ function About() {
       <SectionHead label="01 / The Thinking" title={<>The journey starts<br /><span className="text-outline">before</span> the breakthrough.</>} />
       <div className="mt-16 grid gap-10 md:grid-cols-12">
         <Reveal className="md:col-span-3 md:col-start-4">
-          <p className="font-display text-2xl uppercase leading-tight text-primary">Learning in public, one fundamental at a time.</p>
+          <p className="font-display text-2xl uppercase leading-[1.15] tracking-[0.02em] text-primary">Learning in public, one fundamental at a time.</p>
         </Reveal>
         <Reveal className="max-w-prose space-y-6 text-lg leading-relaxed text-muted-foreground md:col-span-5 md:col-start-8">
           <p>I'm at the beginning of my computer science journey — the stage where every concept is new and every small program teaches something.</p>
@@ -195,9 +195,9 @@ function Skills() {
           <Reveal key={s.n}>
             <li className="group grid grid-cols-12 items-baseline gap-4 border-b py-7 transition-colors hover:bg-surface md:py-9">
               <span className="col-span-2 font-mono text-xs text-muted-foreground md:col-span-1 md:pl-2">0{i + 1}</span>
-              <span className="col-span-10 font-display text-4xl uppercase transition-colors group-hover:text-primary md:col-span-6 md:text-6xl">{s.n}</span>
+              <span className="col-span-10 font-display text-[2rem] uppercase leading-none tracking-[0.015em] transition-colors group-hover:text-primary sm:text-4xl md:col-span-6 md:text-5xl">{s.n}</span>
               <span className="label-mono col-span-10 col-start-3 md:col-span-2 md:col-start-auto">{s.level}</span>
-              <span className="col-span-10 col-start-3 text-sm text-muted-foreground md:col-span-3 md:col-start-auto">{s.note}</span>
+              <span className="col-span-10 col-start-3 text-base text-muted-foreground md:col-span-3 md:col-start-auto">{s.note}</span>
             </li>
           </Reveal>
         ))}
@@ -280,17 +280,11 @@ function Certifications() {
   return (
     <Section id="certifications">
       <SectionHead label="— / Certifications & Achievements" title={<>The record<br /><span className="text-outline">begins here.</span></>} />
-      <Reveal className="mt-16 grid gap-px bg-border sm:grid-cols-3">
-        {["C/001", "C/002", "C/003"].map((c) => (
-          <div key={c} className="flex aspect-[4/3] flex-col justify-between bg-background p-6">
-            <span className="font-mono text-xs text-muted-foreground">{c}</span>
-            <div className="h-px w-full border-t border-dashed border-line" />
-            <span className="label-mono">Awaiting entry</span>
-          </div>
-        ))}
-      </Reveal>
-      <Reveal>
-        <p className="mt-8 max-w-md text-muted-foreground">Genuine certifications and achievements will be added here as they're earned.</p>
+      <Reveal className="mt-16 grid gap-6 border-y py-10 md:grid-cols-12 md:py-14">
+        <span className="label-mono md:col-span-3">Status — Empty by design</span>
+        <p className="max-w-xl text-lg leading-[1.7] text-muted-foreground md:col-span-7">
+          No certifications or achievements listed yet. Genuine ones will be added here as they're earned — nothing is shown that hasn't happened.
+        </p>
       </Reveal>
     </Section>
   );
@@ -314,7 +308,7 @@ function Contact() {
                     {c.value} ↗
                   </a>
                 ) : (
-                  <span className="font-mono text-sm text-muted-foreground/70">[ add {c.label.toLowerCase()} ]</span>
+                  <span className="font-mono text-sm text-muted-foreground/70">Not added yet</span>
                 )}
               </li>
             ))}
