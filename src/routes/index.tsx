@@ -328,7 +328,7 @@ function Footer() {
             <a key={id} href={`#${id}`} className="link-line font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground hover:text-foreground">{l}</a>
           ))}
           {socials.map((c) => (
-            <a key={c.label} href={c.href(c.value!)} className="link-line font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground hover:text-foreground">{c.label}</a>
+            <a key={c.label} href={c.href(c.value!)} target={c.label === "Email" ? undefined : "_blank"} rel="noreferrer" className="link-line font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground hover:text-foreground">{c.label}</a>
           ))}
         </nav>
         <span className="label-mono">© {new Date().getFullYear()} Aditya Singh</span>
