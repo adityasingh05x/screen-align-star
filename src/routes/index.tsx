@@ -31,8 +31,8 @@ const NAV = [
   ["Contact", "contact"],
 ] as const;
 
-function Reveal({ children, className = "" }: { children: ReactNode; className?: string }) {
-  const ref = useRef<HTMLDivElement>(null);
+function Reveal({ children, className = "", as: Tag = "div" }: { children: ReactNode; className?: string; as?: "div" | "li" }) {
+  const ref = useRef<HTMLElement>(null);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
@@ -49,9 +49,9 @@ function Reveal({ children, className = "" }: { children: ReactNode; className?:
     return () => io.disconnect();
   }, []);
   return (
-    <div ref={ref} className={`reveal ${className}`}>
+    <Tag ref={ref as never} className={`reveal ${className}`}>
       {children}
-    </div>
+    </Tag>
   );
 }
 
@@ -68,7 +68,7 @@ function SectionHead({ label, title }: { label: string; title: ReactNode }) {
 
 function Section({ id, children }: { id: string; children: ReactNode }) {
   return (
-    <section id={id} className="scroll-mt-20 border-t px-5 py-24 sm:px-8 md:py-32 lg:px-14">
+    <section id={id} className="scroll-mt-16 border-t px-5 py-24 sm:px-8 md:py-32 lg:px-14">
       <div className="mx-auto max-w-[1400px]">{children}</div>
     </section>
   );
@@ -192,13 +192,11 @@ function Skills() {
       <SectionHead label="02 / The Toolkit" title={<>Learning the<br />fundamentals.</>} />
       <ul className="mt-16 border-t">
         {SKILLS.map((s, i) => (
-          <Reveal key={s.n}>
-            <li className="group grid grid-cols-12 items-baseline gap-4 border-b py-7 transition-colors hover:bg-surface md:py-9">
+          <Reveal as="li" key={s.n} className="group grid grid-cols-12 items-baseline gap-4 border-b py-7 transition-colors hover:bg-surface md:py-9">
               <span className="col-span-2 font-mono text-xs text-muted-foreground md:col-span-1 md:pl-2">0{i + 1}</span>
               <span className="col-span-10 font-display text-[2rem] uppercase leading-none tracking-[0.015em] transition-colors group-hover:text-primary sm:text-4xl md:col-span-6 md:text-5xl">{s.n}</span>
               <span className="label-mono col-span-10 col-start-3 md:col-span-2 md:col-start-auto">{s.level}</span>
               <span className="col-span-10 col-start-3 text-base text-muted-foreground md:col-span-3 md:col-start-auto">{s.note}</span>
-            </li>
           </Reveal>
         ))}
       </ul>
