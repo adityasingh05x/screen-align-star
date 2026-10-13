@@ -18,9 +18,9 @@ export const Route = createFileRoute("/")({
 
 /* ——— Editable contact placeholders: replace null with your real details ——— */
 const CONTACT: { label: string; value: string | null; href: (v: string) => string }[] = [
-  { label: "Email", value: null, href: (v) => `mailto:${v}` },
-  { label: "GitHub", value: null, href: (v) => v },
-  { label: "LinkedIn", value: null, href: (v) => v },
+  { label: "Email", value: "adirajput987139916@gmail.com", href: (v) => `mailto:${v}` },
+  { label: "GitHub", value: "https://github.com/adityasingh05x", href: (v) => v },
+  { label: "LinkedIn", value: "https://www.linkedin.com/in/aditya-singh-49178042b", href: (v) => v },
 ];
 
 const NAV = [
