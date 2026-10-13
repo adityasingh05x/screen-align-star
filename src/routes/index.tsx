@@ -124,7 +124,7 @@ function Hero() {
           <p className="label-mono mb-8 flex items-center gap-3">
             <span className="h-px w-8 bg-primary" /> Computer Science / Jaipur, India
           </p>
-          <h1 className="font-display text-[17vw] uppercase leading-[0.86] tracking-tight sm:text-[13vw] lg:text-[8.6vw] xl:text-[8.4rem]">
+          <h1 className="font-display text-[17vw] uppercase leading-[0.92] tracking-tight sm:text-[13vw] lg:text-[8.6vw] xl:text-[8.4rem]">
             Curious by
             <br />
             <span className="text-outline">Nature.</span>
